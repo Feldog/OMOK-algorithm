@@ -12,15 +12,13 @@ public class Block : MonoBehaviour
     public PlayerType playerType { get; private set; }
     public BlockType blockType { get; private set; }
 
-    private SpriteRenderer _spriteRenderer;
-    private SpriteRenderer _playerRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer playerRenderer;
 
     private Action _onClickBoard;
 
     private void Awake()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _playerRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     private void OnMouseDown()
@@ -34,16 +32,16 @@ public class Block : MonoBehaviour
         switch (playerType)
         {
             case PlayerType.None:
-                _playerRenderer.color = new Color(0,0,0,0);
+                playerRenderer.color = new Color(0,0,0,0);
                 break;
             case PlayerType.PlayerA:
-                _playerRenderer.color = Color.black;
+                playerRenderer.color = Color.black;
                 break;
             case PlayerType.PlayerB:
-                _playerRenderer.color = Color.white;
+                playerRenderer.color = Color.white;
                 break;
             case PlayerType.Forbidden:
-                _playerRenderer.color = Color.red;
+                playerRenderer.color = Color.red;
                 break;
         }
     }
@@ -54,15 +52,15 @@ public class Block : MonoBehaviour
         switch (blockType)
         {
             case BlockType.None:
-                _spriteRenderer.enabled = false;
+                spriteRenderer.enabled = false;
                 break;
             case BlockType.Gray:
-                _spriteRenderer.enabled = true;
-                _spriteRenderer.color = Color.gray;
+                spriteRenderer.enabled = true;
+                spriteRenderer.color = Color.gray;
                 break;
             case BlockType.Yellow:
-                _spriteRenderer.enabled = true;
-                _spriteRenderer.color = Color.yellow;
+                spriteRenderer.enabled = true;
+                spriteRenderer.color = Color.yellow;
                 break;
         }
     }

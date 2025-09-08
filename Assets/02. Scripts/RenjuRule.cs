@@ -151,7 +151,11 @@ public static class RenjuRule
             }
 
             // 인덱스에 4개가 들어있을경우 4를 반환
-            if (count == 4) fourConunt++;
+            if (count == 4)
+            {
+                fourConunt = 1;
+                break;
+            }
         }
 
         // 열린 4를 만들수있는 3(XOOOX)의 경우 체크 (끝에 백돌이 있거나 보드의 벽면에 붙어있으면 예외)

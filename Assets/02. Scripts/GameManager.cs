@@ -27,7 +27,7 @@ public class GameManager : Singleton<GameManager>
         var col = boardIndex % boardCol;
         var row = boardIndex / boardCol;
 
-        if(board[col, row] == PlayerType.None)
+        if(board[col, row] == PlayerType.None || board[col, row] == PlayerType.Forbidden)
         {
             // 흑돌일때 돌을 둘수있는지 확인
             if (currentPlayer == PlayerType.PlayerA && RenjuRule.IsForbidden(board, col, row))
