@@ -201,7 +201,42 @@ public static class RenjuRule
             }
         }
 
-        // 4가 있을 경우 4 3이므로 금수가 아님 4의 경우의 수만 확인
+        // https://www.renju.net/rifrules/ 공식 대회 Renjurule 문서 확인 결과 교차로에서의 4-4만 인정됨
+        // OOXOOXOO 상황 막기 (4가 한줄에 띄워진 상태로 연속으로 두개가 나옴)
+        /*for (int i = 0; i <= 1; i++)
+        {
+            if (line[i] == PlayerType.PlayerA &&
+                line[i + 1] == PlayerType.PlayerA &&
+                line[i + 2] == PlayerType.None &&
+                line[i + 3] == PlayerType.PlayerA &&
+                line[i + 4] == PlayerType.PlayerA &&
+                line[i + 5] == PlayerType.None &&
+                line[i + 6] == PlayerType.PlayerA &&
+                line[i + 7] == PlayerType.PlayerA)
+            {
+                fourConunt += 2;
+            }
+        }*/
+
+        // https://www.renju.net/rifrules/ 공식 대회 Renjurule 문서 확인 결과 교차로에서의 4-4만 인정됨
+        // OXOOOXO 상황 막기 (4가 한줄에 띄워진 상태로 연속으로 두개가 나옴)
+        /*for (int i = 0; i <= 2; i++)
+        {
+            if (line[i] == PlayerType.PlayerA &&
+                line[i + 1] == PlayerType.None &&
+                line[i + 2] == PlayerType.PlayerA &&
+                line[i + 3] == PlayerType.PlayerA &&
+                line[i + 4] == PlayerType.PlayerA &&
+                line[i + 5] == PlayerType.None &&
+                line[i + 6] == PlayerType.PlayerA)
+            {
+                fourConunt += 2;
+            }
+        }*/
+
+
+        // 4가 있을 경우 3의 값은 의미가 없어짐 (4 3 으로 이뤄질경우 금수가 아님)
+        // 4의 경우의 수만 확인
         if (fourConunt > 0)
         {
             return (fourConunt, 0);
